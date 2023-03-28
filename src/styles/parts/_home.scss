@@ -1,0 +1,42 @@
+.home {
+	// .home-image
+	@apply relative mt-32 w-full;
+	&-image {
+		width: 100%;
+		max-width: 1090px;
+		height: 640px;
+		@apply bg-cover bg-center bg-no-repeat;
+	}
+
+	// .home-info
+	&-info {
+		@media screen and (max-width: 1080px) {
+			@apply -bottom-8 w-[98%];
+			transform: translateX(-50%);
+		}
+		@apply absolute top-1/2 left-1/2 flex h-[404px] w-1/2 flex-col items-center justify-center bg-white/80 px-3;
+		transform: translateY(-50%);
+	}
+
+	// .home-title
+
+	&-title {
+		@apply text-center text-black md:text-2xl xl:text-3xl;
+	}
+
+	// .home-subtitle
+
+	&-subtitle {
+		@apply mt-3 text-center text-3xl font-semibold text-darkPurple xl:text-5xl;
+	}
+
+	// .home-button
+
+	&-button {
+		@apply mt-4 cursor-pointer bg-purple py-3 px-7 text-base font-semibold text-white outline-none ring-0 transition-colors duration-200 hover:bg-white hover:text-purple md:px-14 md:py-6 xl:text-3xl;
+		border: 2px solid transparent;
+		&:hover {
+			@apply border-purple;
+		}
+	}
+}

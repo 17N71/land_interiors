@@ -1,0 +1,13 @@
+@import "./icomoon/style.css";
+@import "./tailwind.css";
+@import "./parts/reset";
+html {
+	@apply scroll-smooth antialiased;
+}
+body {
+	font-family: "Poppins", sans-serif;
+	@apply antialiased;
+}
+.main {
+	@apply w-full;
+}

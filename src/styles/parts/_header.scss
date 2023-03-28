@@ -1,0 +1,87 @@
+.header {
+	@apply flex flex-col gap-8 pl-9 pr-24 pt-9;
+	// .header-top
+	&-top {
+		@apply flex items-center justify-between;
+	}
+	// .header-logo
+	&-logo {
+		// .header-logo_image
+		@apply h-[111px] w-[111px] shrink-0;
+		&_image {
+			@apply object-cover;
+		}
+	}
+
+	// .header-links
+	&-links {
+		@apply fixed -bottom-full left-1/2 z-20 flex w-full transform items-center justify-center gap-10 transition-all duration-300 lg:gap-16 lm:static lm:z-0 lm:w-auto 2xl:gap-24;
+		@media screen and (min-width: 1080px) {
+			transform: none;
+		}
+		@media screen and (max-width: 590px) {
+			@apply flex-col gap-2;
+		}
+
+		transform: translateX(-50%);
+		&.active {
+			@apply bottom-1;
+		}
+		// .header-links_link
+		&_link {
+			@apply text-xl font-medium text-textPurple;
+			@media screen and (max-width: 300px) {
+				@apply text-lg;
+			}
+		}
+	}
+
+	// .header-footer
+
+	&-footer {
+		@apply fixed -top-full left-0 z-10 flex h-full w-full items-center justify-center bg-[#E5E5E5]   transition-all duration-300 lm:static lm:z-0 lm:h-auto lm:w-auto lm:bg-transparent;
+		&.active {
+			@apply top-0;
+		}
+	}
+	// .header-navigation
+	&-navigation {
+		@apply items-center  justify-center;
+		@media screen and (max-height: 420px) {
+			@apply h-full pt-5;
+		}
+	}
+	// .header-list
+	&-list {
+		@apply flex flex-col items-center justify-center gap-6 text-xl lm:flex-row lm:gap-20;
+		&_link {
+			@apply text-black;
+		}
+	}
+
+	&-menu {
+		@apply fixed right-16 z-20 flex h-7 w-11 flex-col items-center justify-between gap-1.5 border-none bg-transparent p-1 outline-none ring-0 lm:hidden;
+		&_icon {
+			@apply flex h-full max-h-[4px] min-h-[4px] w-full   bg-black transition-all duration-300 ease-in-out;
+		}
+		&.active {
+			.header-menu_icon:nth-of-type(2) {
+				@apply invisible opacity-0;
+			}
+			.header-menu_icon:nth-of-type(1) {
+				transform: rotate(-45deg) translateY(12px) translateX(-2px);
+			}
+			.header-menu_icon:nth-of-type(3) {
+				transform: rotate(45deg) translateY(-12px) translateX(-3px);
+			}
+		}
+	}
+}
+@keyframes menuVisible {
+	from {
+		top: -100%;
+	}
+	to {
+		top: 0%;
+	}
+}
