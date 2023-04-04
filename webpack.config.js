@@ -1,13 +1,31 @@
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const CopyWebpackPlugin = require("copy-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
-
+const TerserPlugin = require("terser-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 module.exports = {
 	mode: "development",
-	entry: "./src/index.ts",
+	entry: "./src/scripts/index.ts",
 	output: {
-		filename: "bundle.js",
+		filename: "[contenthash].bundle.js",
 		path: path.resolve(__dirname, "dist"),
+	},
+	performance: {
+		maxAssetSize: 100000,
+		hints: false,
+	},
+	cache: {
+		type: "filesystem",
+		compression: "gzip",
+	},
+	optimization: {
+		minimizer: [
+			new TerserPlugin({
+				parallel: true,
+				terserOptions: {},
+			}),
+		],
 	},
 	resolve: {
 		extensions: [".ts", ".js"],
@@ -32,9 +50,9 @@ module.exports = {
 				use: "babel-loader",
 			},
 			{
-				test: /\.s[ac]ss$/i,
+				test: /\.(c|sc)ss$/,
 				use: [
-					process.env.NODE_ENV !== "production" ? "style-loader" : "",
+					process.env.NODE_ENV !== "production" ? "style-loader" : MiniCssExtractPlugin.loader,
 					"css-loader",
 					{
 						loader: "postcss-loader",
@@ -48,7 +66,7 @@ module.exports = {
 				],
 			},
 			{
-				test: /\.(png|jpe?g|gif|svg)$/i,
+				test: /\.(png|jpe?g|gif|svg|webp)$/i,
 				use: [
 					{
 						loader: "url-loader",
@@ -92,12 +110,21 @@ module.exports = {
 			template: "./src/index.html",
 			filename: "index.html",
 		}),
+		new CopyWebpackPlugin({
+			patterns: [
+				{ from: "src/assets", to: "assets" },
+				{ from: "src/public", to: "public" },
+			],
+		}),
+		new MiniCssExtractPlugin({
+			filename: "[contenthash].css",
+		}),
 	],
 	devServer: {
 		static: {
 			directory: path.join(__dirname, "src"),
 		},
-		open: true,
 		compress: true,
+		open: true,
 	},
 }

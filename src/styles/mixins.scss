@@ -1,0 +1,7 @@
+@mixin buttonMixin {
+	@apply mx-auto  mt-12 max-w-max cursor-pointer bg-purple py-5 px-20 text-center text-2xl font-semibold text-white transition-colors duration-300;
+	border: 2px solid transparent;
+	&:hover {
+		@apply border-purple bg-white text-purple;
+	}
+}

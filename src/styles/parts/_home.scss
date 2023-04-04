@@ -1,6 +1,6 @@
 .home {
 	// .home-image
-	@apply relative mt-32 w-full;
+	@apply relative mt-8 w-full lm:mt-32;
 	&-image {
 		width: 100%;
 		max-width: 1090px;
@@ -10,11 +10,12 @@
 
 	// .home-info
 	&-info {
+		@apply absolute top-1/2 left-1/2 flex h-[404px] w-1/2 flex-col items-center justify-center bg-white/80 px-3;
 		@media screen and (max-width: 1080px) {
 			@apply -bottom-8 w-[98%];
 			transform: translateX(-50%);
 		}
-		@apply absolute top-1/2 left-1/2 flex h-[404px] w-1/2 flex-col items-center justify-center bg-white/80 px-3;
+
 		transform: translateY(-50%);
 	}
 

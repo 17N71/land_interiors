@@ -1,0 +1,48 @@
+@import "../mixins.scss";
+
+.blogs {
+	// .blogs-title
+	@apply mt-32 slm:pl-24;
+	&-title {
+		@apply mb-14 text-center text-4xl font-medium text-darkPurple ssm:text-left;
+	}
+
+	// .blogs-cards
+
+	&-cards {
+		// .blogs-cards_card
+
+		&_card {
+			@apply flex w-full flex-col items-center justify-center px-2 slm:items-stretch;
+			@media screen and (max-width: 450px) {
+				img {
+					@apply w-full rounded-2xl object-cover object-center;
+				}
+			}
+		}
+		// .blogs-cards_card-title
+		&_card-title {
+			@apply mt-6 mb-4 text-center text-2xl font-medium slm:text-left;
+		}
+		// .blogs-cards_card-description
+		&_card-description {
+			@apply px-3 text-lg ssm:px-0;
+		}
+	}
+	// .blogs-button
+	&-button {
+		@include buttonMixin();
+	}
+	@media screen and (min-width: 1775px) {
+		.splide__arrow.splide__arrow--next,
+		.splide__arrow.splide__arrow--prev {
+			@apply right-0;
+		}
+	}
+	.splide__arrow.splide__arrow--next,
+	.splide__arrow.splide__arrow--prev {
+		@apply top-[38%] flex h-9 w-9 items-center justify-center rounded-none  bg-white;
+		border: none;
+		outline: none;
+	}
+}

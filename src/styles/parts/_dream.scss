@@ -1,0 +1,43 @@
+@import "../mixins.scss";
+.dream {
+	@apply mx-auto my-24 w-full px-7 ssm:px-10 md:px-24 slm:px-32 lm:px-56;
+	// .dream-title
+	&-title {
+		@apply text-4xl;
+	}
+	// .dream-form
+	&-form {
+		@apply relative flex   w-full flex-col items-end justify-between gap-20;
+		@media screen and (min-width: 1440px) {
+			@apply flex-row;
+		}
+		input {
+			@apply h-max w-full py-4 px-2 text-2xl transition-colors placeholder:text-black/40;
+			border: none;
+			border-bottom: 2px solid rgba(0, 0, 0, 0.33);
+			outline: none;
+			&:focus {
+				@apply placeholder:text-black;
+				border-bottom: 2px solid rgba(0, 0, 0, 1);
+			}
+		}
+
+		@apply mt-24;
+		// .dream-form_name
+		// ? &_name {
+		// }
+		// // .dream-form_email
+		// ? &_email-or_phone {
+		// }
+		&_send {
+			@include buttonMixin();
+			@apply text-2xl;
+			@media screen and (max-width: 1440px) {
+				margin-top: 0 !important;
+			}
+		}
+		&_warrning {
+			@apply absolute top-0 left-0 text-2xl font-semibold text-red-600;
+		}
+	}
+}

@@ -1,0 +1,33 @@
+.what_we_do {
+	@apply mt-32 flex flex-col items-center;
+	// .what_we_do-title
+	&-title {
+		@apply mb-14 text-4xl font-medium;
+	}
+	// .what_we_do-cards
+	&-cards {
+		@apply flex w-full max-w-[1300px] flex-wrap items-center justify-between gap-4 px-3;
+		@media screen and (max-width: 1236px) {
+			@apply justify-center;
+		}
+	}
+	// .what_we_do-card
+	&-card {
+		@apply flex w-full max-w-[290px] flex-col items-center gap-8;
+		// .what_we_do-card_image
+		&_image {
+			@apply rounded-2xl object-cover object-center shadow-sm shadow-darkPurple transition-all;
+			&:hover {
+				transform: scale(1.05);
+				@apply shadow-purple;
+			}
+		}
+		// .what_we_do-card_title
+		&_title {
+			@apply text-2xl font-semibold text-purple;
+		}
+	}
+	&-paragraph {
+		@apply mt-12 w-full max-w-[1300px] px-2 text-center leading-7 ssm:px-0;
+	}
+}

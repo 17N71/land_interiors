@@ -1,0 +1,42 @@
+@import "../mixins.scss";
+.our_projects {
+	@apply relative mt-28 flex flex-col items-center  justify-center gap-14 px-1 ssm:px-9 sm:px-10 md:px-14 lm:flex-row lm:justify-start lm:gap-0 lm:px-24;
+	// .our_projects-grid
+	&-grid {
+		@apply flex flex-col justify-center gap-y-2 slm:flex-row slm:gap-x-2;
+		// .our_projects-grid_col
+		&_col {
+			@apply flex w-full flex-col justify-center gap-y-3.5;
+			img {
+				@apply w-full object-cover object-center transition-transform duration-300;
+				&:nth-child(2n + 1):hover {
+					transform: rotate(1deg);
+				}
+				&:nth-child(2n + 2):hover {
+					transform: rotate(-1deg);
+				}
+			}
+		}
+	}
+	// .our_projects-info
+	&-info {
+		@apply static left-1/2 flex w-full flex-col items-center  justify-center bg-white/80 px-1 pt-16 pb-14 ssm:px-9 sm:px-10  md:px-14 lm:absolute lm:w-1/2 lm:px-16;
+		@media screen and (max-width: 1080px) {
+			transform: none;
+		}
+		transform: translateY(-50%);
+		transform: translateX(-15%);
+		// .our_projects-info_title
+		&_title {
+			@apply text-center text-4xl font-medium text-darkPurple;
+		}
+		// .our_projects-info_artcle
+		&_artcle {
+			@apply mt-11 flex flex-col gap-6 text-center text-lg ssm:text-left;
+		}
+		// .our_projects-info_button
+		&_button {
+			@include buttonMixin();
+		}
+	}
+}

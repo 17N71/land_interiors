@@ -1,6 +1,5 @@
-const plugin = require("tailwindcss/plugin")
-
 module.exports = {
+	content: ["./dist/**/*.{html,htm,js}", "./src/**/*.{html,,js}"],
 	theme: {
 		extend: {
 			colors: {
@@ -9,7 +8,11 @@ module.exports = {
 				textPurple: "#451a64 ",
 			},
 			screens: {
+				lg: "1240px",
 				lm: "1080px",
+				slm: "871px",
+				sslm: "650px",
+				ssm: "450px",
 			},
 		},
 	},

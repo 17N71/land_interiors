@@ -1,0 +1,69 @@
+@import "../mixins.scss";
+.our_products {
+	@apply mt-32 flex flex-col items-center justify-center;
+	// .our_products-title
+	&-title {
+		@apply mb-12 text-center text-4xl font-medium text-darkPurple;
+	}
+	// .our_products-grid
+	&-grid {
+		display: grid;
+		grid-template-columns: repeat(4, auto);
+		column-gap: 15px;
+		@apply px-3;
+		@media screen and (max-width: 1590px) {
+			grid-template-columns: repeat(2, auto);
+		}
+		@media screen and (max-width: 871px) {
+			column-gap: 0;
+			row-gap: 15px;
+
+			grid-template-columns: repeat(1, auto);
+			&_column-tight:nth-last-of-type(1),
+			&_column-bold:nth-last-of-type(1) {
+				@apply hidden;
+			}
+			&_column-tight:nth-last-of-type(2) {
+				img {
+					@apply w-full object-cover object-center;
+				}
+			}
+			&_column-bold:nth-last-of-type(2) {
+				@apply w-full object-cover object-center;
+			}
+		}
+
+		// .our_products-grid_column-tight
+		&_column-tight {
+			img {
+				@apply block h-[332px] w-[313px];
+			}
+			@media screen and (max-width: 1080px) {
+				&:nth-last-of-type(1) {
+					@apply hidden;
+				}
+			}
+		}
+		// .our_products-grid_column-bold
+		&_column-bold {
+			@apply h-[676px] w-[450px];
+			@media screen and (max-width: 1080px) {
+				&:nth-last-of-type(1) {
+					@apply hidden;
+				}
+			}
+			@media screen and (max-width: 871px) {
+				@apply h-[313px] w-[676px];
+				@apply w-full object-cover object-center;
+			}
+		}
+	}
+	// .our_products-paragraph
+	&-paragraph {
+		@apply mt-8 w-full max-w-[640px] px-3 text-center text-lg ssm:px-0;
+	}
+	// .our_products-button
+	&-button {
+		@include buttonMixin();
+	}
+}
