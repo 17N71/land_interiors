@@ -9,7 +9,7 @@ module.exports = {
 	entry: "./src/scripts/index.ts",
 	output: {
 		filename: "[contenthash].bundle.js",
-		path: path.resolve(__dirname, "dist"),
+		path: path.resolve(__dirname, "build"),
 	},
 	performance: {
 		maxAssetSize: 100000,
